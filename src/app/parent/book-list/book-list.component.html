@@ -1,0 +1,14 @@
+<div class="book-list-container">
+  <h2>Book List</h2>
+
+  
+  <div class = "list" *ngFor="let category of categories">
+    <h3>{{ category }}</h3>
+    <ul>
+      <li *ngFor="let book of getBooksByCategory(category)">
+        <!-- <app-book-card [book]="book" (addReview)="onAddReview(book)"></app-book-card> -->
+      </li>
+    </ul>
+  </div>
+</div>                                    
+ 

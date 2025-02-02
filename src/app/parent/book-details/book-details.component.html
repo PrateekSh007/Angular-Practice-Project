@@ -1,0 +1,17 @@
+<div *ngIf="selectedBook" class="book-details">
+    <h2>{{ selectedBook.title }}</h2>
+    <p><strong>Author:</strong> {{ selectedBook.author }}</p>
+    <p><strong>Category:</strong> {{ selectedBook.category }}</p>
+  
+    <h3>Reviews</h3>
+    <ul>
+      <li *ngFor="let review of selectedBook.reviews">{{ review }}</li>
+    </ul>
+  
+ 
+    <div class="add-review">
+      <h3>Add a Review</h3>
+      <textarea [(ngModel)]="newReview" placeholder="Write your review here..."></textarea>
+      <button (click)="onAddReview()">Add Review</button>
+    </div>
+  </div>

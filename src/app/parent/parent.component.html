@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Book Management System</h1>
+
+
+  <button (click)="openAddBookForm()">Add Book</button>
+
+ 
+  <div *ngIf="showAddBookForm" class="form-container">
+    <h2>Add a New Book</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="newBook.title" name="title" required>
+      </div>
+
+      <div>
+        <label for="author">Author:</label>
+        <input type="text" id="author" [(ngModel)]="newBook.author" name="author" required>
+      </div>
+
+      <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" [(ngModel)]="newBook.category" name="category" required>
+      </div>
+
+      <div>
+        <label for="review">Review:</label>
+        <textarea id="review" [(ngModel)]="newBook.review" name="review"></textarea>
+      </div>
+
+      <button type="submit">Add Book</button>
+      <button type="button" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+
+ 
+  <div class="main-content">
+ 
+    <div class="book-list">
+      <h2>Books</h2>
+      <ul>
+        <li *ngFor="let book of books" (click)="onSelectBook(book)">
+          <h3>{{ book.title }}</h3>
+          <p>Author: {{ book.author }}</p>
+          <p>Category: {{ book.category }}</p>
+        </li>
+      </ul>
+    </div>
+
+
+    <app-book-details [selectedBook]="selectedBook" (addReview)="addReview($event)"></app-book-details>
+  </div>
+</div>
